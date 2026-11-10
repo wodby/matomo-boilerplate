@@ -1,13 +1,26 @@
 # Matomo boilerplate
 
-Keep your own Matomo plugins in Git and deploy them with Wodby. This
-repository holds only your plugins: Wodby builds them on top of the prebuilt
-[`wodby/matomo`](https://github.com/wodby/matomo) image, so Matomo itself
-keeps getting updates from Wodby.
+Keep Matomo's version and your own Matomo plugins in Git and deploy them with
+Wodby, the way a Drupal or WordPress repository pins its core and modules.
 
 Use it with the [buildable Matomo](https://github.com/wodby/service-matomo-buildable)
-service (`matomo-buildable`). For Matomo without your own plugins, use the
+service (`matomo-buildable`). For Matomo without your own plugins, where Wodby
+keeps Matomo up to date for you, use the
 [Matomo](https://github.com/wodby/service-matomo) service instead.
+
+## Matomo's version
+
+`.matomo-version` names the Matomo release to run, for example `5.14.2`. The
+build downloads that release from builds.matomo.org, checks its signature and
+uses it in place of the Matomo in Wodby's image. To upgrade Matomo, change the
+version and deploy: the deployment updates Matomo's database.
+
+The version must belong to the Matomo major version selected for the service
+(5 today); the build fails otherwise. Without `.matomo-version`, the build uses
+the Matomo release of Wodby's image.
+
+You decide when to upgrade, so watch
+[Matomo's releases](https://matomo.org/changelog/) for security fixes.
 
 ## Adding a plugin
 
@@ -39,6 +52,7 @@ survive deployments.
 
 | Path | Purpose |
 | --- | --- |
+| `.matomo-version` | The Matomo release to run |
 | `plugins/` | Your Matomo plugins |
 | `.wodby/pipeline.yml` | The Wodby CI pipeline that builds and deploys the image |
 | `.dockerignore` | Files left out of the image |
