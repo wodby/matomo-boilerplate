@@ -12,12 +12,12 @@ keeps Matomo up to date for you, use the
 
 `.matomo-version` names the Matomo release to run, for example `5.14.2`. The
 build downloads that release from builds.matomo.org, checks its signature and
-uses it in place of the Matomo in Wodby's image. To upgrade Matomo, change the
-version and deploy: the deployment updates Matomo's database.
+installs it on [`wodby/matomo-php`](https://github.com/wodby/matomo-php), which
+brings PHP, Apache and Wodby's setup. To upgrade Matomo, change the version and
+deploy: the deployment updates Matomo's database.
 
-The version must belong to the Matomo major version selected for the service
-(5 today); the build fails otherwise. Without `.matomo-version`, the build uses
-the Matomo release of Wodby's image.
+Matomo 5 releases are supported. The file is required: the build fails
+without it.
 
 You decide when to upgrade, so watch
 [Matomo's releases](https://matomo.org/changelog/) for security fixes.
