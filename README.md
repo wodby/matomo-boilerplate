@@ -5,8 +5,8 @@ repository holds only your plugins: Wodby builds them on top of the prebuilt
 [`wodby/matomo`](https://github.com/wodby/matomo) image, so Matomo itself
 keeps getting updates from Wodby.
 
-Use it with the [Matomo with custom plugins](https://github.com/wodby/service-matomo-custom)
-service. For Matomo without your own plugins, use the
+Use it with the [buildable Matomo](https://github.com/wodby/service-matomo-buildable)
+service (`matomo-buildable`). For Matomo without your own plugins, use the
 [Matomo](https://github.com/wodby/service-matomo) service instead.
 
 ## Adding a plugin
